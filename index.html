@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alzheimer's Pipeline</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Pixelated font -->
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="blob-container" id="blobs"></div>
+
+  <!-- Intro typing -->
+  <div class="intro" id="intro">
+    <span id="intro-text"></span>
+  </div>
+
+  <!-- Pipey + dialogue -->
+  <div class="dialogue-container" id="dialogue" style="display:none;">
+    <img src="pipey.gif" alt="Pipey" class="pipe-sprite">
+    <div class="speech-bubble">
+      <p id="pipey-text"></p>
+      <div class="options" id="options"></div>
+    </div>
+  </div>
+
+  <!-- Placeholder sound -->
+  <audio id="blip-sound" src="pop.mp3" preload="auto"></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>

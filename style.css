@@ -1,0 +1,187 @@
+body {
+  margin: 0;
+  height: 100%;
+  background: linear-gradient(45deg, #ffb6c1, #ff69b4, #ffc0cb, #ff1493);
+  background-size: 400% 400%;
+  animation: gradientMove 40s ease infinite;
+  overflow: hidden;
+  font-family: 'Press Start 2P', monospace;
+  color: white;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Blobs */
+.blob-container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+}
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.6;
+  animation: blobFloat 60s ease-in-out infinite alternate;
+  background: radial-gradient(circle, #ff69b4, #ff1493, #ffc0cb);
+  mix-blend-mode: screen;
+}
+@keyframes blobFloat {
+  0% { transform: translate(0,0) scale(1); }
+  50% { transform: translate(250px, -200px) scale(1.4); }
+  100% { transform: translate(-200px, 150px) scale(1); }
+}
+
+/* Intro typing */
+.intro {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 26px;
+  text-align: center;
+  z-index: 5;
+  white-space: pre;
+  color: #fff;
+  text-shadow: 2px 2px 0px #ff1493;
+}
+
+.jump {
+  display: inline-block;
+  animation: jumpAnim 0.3s ease infinite;
+}
+@keyframes jumpAnim {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes fadeUp {
+  0% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-30px); }
+}
+
+/* Blobs pulse during intro */
+@keyframes pulseAnim {
+  0% { transform: scale(1) translate(0,0); opacity: 0.6; }
+  50% { transform: scale(1.1) translate(10px, -10px); opacity: 0.8; }
+  100% { transform: scale(1) translate(0,0); opacity: 0.6; }
+}
+.pulse {
+  animation: pulseAnim 1s ease-in-out infinite alternate;
+}
+
+/* Dialogue section */
+.dialogue-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pipe-sprite {
+  width: 120px;
+  height: auto;
+  image-rendering: pixelated;
+  margin-bottom: 15px;
+}
+
+.speech-bubble {
+  background: #ffb6c1;
+  border: 4px solid #ff69b4;
+  border-radius: 12px;
+  padding: 15px;
+  max-width: 350px;
+  position: relative;
+  color: black;
+  font-size: 12px;
+}
+
+.speech-bubble::after {
+  content: "";
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  margin-left: -10px;
+  border-width: 20px 10px 0;
+  border-style: solid;
+  border-color: #ffb6c1 transparent transparent transparent;
+}
+
+.options {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.options button {
+  background: #ff69b4;
+  border: none;
+  padding: 10px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.options button:hover {
+  background: #ff1493;
+}
+
+/* Option content */
+.option-content {
+  margin-top: 10px;
+  padding: 10px;
+  background: #ffe6f0;
+  border: 2px solid #ff69b4;
+  border-radius: 8px;
+  font-size: 10px;
+  text-align: center;
+  max-width: 80vw;   /* dynamic width */
+  max-height: 80vh;  /* dynamic height */
+  overflow: auto;    /* allow scroll if needed */
+  transition: all 0.3s ease; /* smooth expand */
+}
+
+/* Custom pink scrollbar */
+.option-content::-webkit-scrollbar {
+  width: 10px;
+}
+
+.option-content::-webkit-scrollbar-track {
+  background: #ffc0cb33;
+  border-radius: 5px;
+}
+
+.option-content::-webkit-scrollbar-thumb {
+  background-color: #ff69b4;
+  border-radius: 5px;
+  border: 2px solid #ffe6f0;
+}
+
+/* Firefox scrollbar */
+.option-content {
+  scrollbar-width: thin;
+  scrollbar-color: #ff69b4 #ffc0cb33;
+}
+
+.option-content iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 8px;
+  display: block;
+}
