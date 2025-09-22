@@ -135,6 +135,14 @@ body {
   color: white;
   border-radius: 8px;
   cursor: pointer;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.3s ease;
+}
+
+.options button.show {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .options button:hover {
@@ -145,37 +153,45 @@ body {
 .option-content {
   margin-top: 10px;
   padding: 10px;
-  background: #ffe6f0;
+  background: #ffe6f0; /* keep original box color */
   border: 2px solid #ff69b4;
   border-radius: 8px;
   font-size: 10px;
   text-align: center;
-  max-width: 80vw;   /* dynamic width */
-  max-height: 80vh;  /* dynamic height */
-  overflow: auto;    /* allow scroll if needed */
-  transition: all 0.3s ease; /* smooth expand */
+  max-width: 80vw;   /* enlarge width */
+  max-height: 80vh;  /* enlarge height */
+  overflow: auto;    /* allow scroll */
+  transition: all 0.5s ease;
+  opacity: 0;
+  transform: scale(0.8); /* start smaller for animation */
 }
 
-/* Custom pink scrollbar */
+/* Show state triggers fade-in + grow */
+.option-content.show {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Scrollbar styling - Chrome/Edge/Safari */
 .option-content::-webkit-scrollbar {
-  width: 10px;
+  width: 12px;
 }
 
 .option-content::-webkit-scrollbar-track {
-  background: #ffc0cb33;
-  border-radius: 5px;
+  background: #000;  /* black track */
+  border-radius: 6px;
 }
 
 .option-content::-webkit-scrollbar-thumb {
-  background-color: #ff69b4;
-  border-radius: 5px;
-  border: 2px solid #ffe6f0;
+  background-color: #ff69b4; /* pink thumb */
+  border-radius: 6px;
+  border: 2px solid #ffe6f0; /* border matches box background */
 }
 
-/* Firefox scrollbar */
+/* Scrollbar styling - Firefox */
 .option-content {
   scrollbar-width: thin;
-  scrollbar-color: #ff69b4 #ffc0cb33;
+  scrollbar-color: #ff69b4 #000; /* thumb / track */
 }
 
 .option-content iframe {

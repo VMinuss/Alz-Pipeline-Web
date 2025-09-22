@@ -67,8 +67,8 @@ function showPipey() {
   dialogueContainer.style.display = "flex";
   typePipeyText("What can I help you with?", () => {
     optionsEl.innerHTML = `
-      <button onclick="showOption('Option 1 Selected!')">Option 1</button>
-      <button onclick="showOption('Option 2 Selected!')">Option 2</button>
+      <button class="show" onclick="showOption('Option 1 Selected!')">Option 1</button>
+      <button class="show" onclick="showOption('Option 2 Selected!')">Option 2</button>
     `;
   });
 }
@@ -93,8 +93,24 @@ function showOption(msg) {
 
     optionsEl.innerHTML = `
       ${content}
-      <button onclick="goBack()">I want to go back</button>
+      <button class="show" onclick="goBack()">I want to go back</button>
     `;
+
+    // Animate the option-content box
+    const box = document.querySelector(".option-content");
+    if (box) {
+      setTimeout(() => {
+        box.classList.add("show");
+      }, 50); // small delay for DOM render
+    }
+
+    // Animate the back button
+    const backBtn = optionsEl.querySelector("button");
+    if (backBtn) {
+      setTimeout(() => {
+        backBtn.classList.add("show");
+      }, 150);
+    }
   });
 }
 
@@ -122,3 +138,4 @@ setInterval(createBlob, 5000);
 
 // Start intro
 typeIntro();
+
